@@ -25,7 +25,7 @@ def search_memes(descriptions, query):
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform(text_data)
 
-    query_vector = tfidf_matrix[-1]  # The last vector is the query
+    query_vector = tfidf_matrix[-1]
     similarity_scores = cosine_similarity(query_vector, tfidf_matrix[:-1]).flatten()
 
     top_indices = similarity_scores.argsort()[-5:][::-1]
